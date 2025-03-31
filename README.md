@@ -32,7 +32,7 @@ menggunakan clean architecture
 ## 🚀 Instalasi & Menjalankan Proyek
 ### 1. Clone Repository
 ```sh
-git clone https://github.com/username/repository.git
+git clone https://github.com/YourMasterIsFool/test-vue-payment-gateway.git
 cd repository
 ```
 
