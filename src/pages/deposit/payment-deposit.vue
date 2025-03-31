@@ -17,6 +17,7 @@
     } from 'vue-router';
 
     const transactionStatus = ref(null);
+    const statusName =  ref(null);
 
     const loadingCallback =  ref<boolean>(false);
 
@@ -25,6 +26,8 @@
 
       channel.bind("payment-success", (data) => {
         console.log("Payment Success:", data.transaction);
+
+        statusName.value=data.transaction.status.name;
         transactionStatus.value = `Order ${data.transaction.external_id} is ${data.transaction.status.name}`;
       });
     });
@@ -75,7 +78,7 @@
                     </span>
                 </div>
 
-                <div v-if="transactionStatus" class="bg-green-100 p-8 text-green-600 border-green-600 rounded-md">
+                <div v-if="transactionStatus" :class="['px-6 rounded-full py-2', ((statusName == 'Success' ? 'bg-green-100 text-green-600': 'bg-red-100 text-red-600'))]">
                     {{
                         transactionStatus
                     }}
